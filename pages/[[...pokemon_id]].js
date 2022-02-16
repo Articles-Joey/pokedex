@@ -174,15 +174,15 @@ export default function Home(props) {
 
                     <img className='mx-auto d-block' src={activePokemon?.img} alt="" />
 
-                    <ul class="list-group list-group-flush mb-3">
+                    <ul className="list-group list-group-flush mb-3">
 
-                        <li class="list-group-item">Type: {activePokemon?.type.map(type => <span className='badge bg-danger me-1'>{type}</span>)}</li>
+                        <li className="list-group-item">Type: {activePokemon?.type.map(type => <span className='badge bg-danger me-1'>{type}</span>)}</li>
 
-                        <li class="list-group-item">Weaknesses: {activePokemon?.weaknesses.map(type => <span className='badge bg-danger me-1'>{type}</span>)}</li>
+                        <li className="list-group-item">Weaknesses: {activePokemon?.weaknesses.map(type => <span className='badge bg-danger me-1'>{type}</span>)}</li>
 
-                        <li class="list-group-item">Height: <span className='badge bg-danger'>{activePokemon?.height}</span></li>
+                        <li className="list-group-item">Height: <span className='badge bg-danger'>{activePokemon?.height}</span></li>
 
-                        <li class="list-group-item">Weight: <span className='badge bg-danger'>{activePokemon?.weight}</span></li>
+                        <li className="list-group-item">Weight: <span className='badge bg-danger'>{activePokemon?.weight}</span></li>
 
                     </ul>
 
@@ -190,7 +190,7 @@ export default function Home(props) {
                         <div className='mb-2'>
                             <h6>Prev Evolution:</h6>
                             {activePokemon?.prev_evolution?.map(pokemon =>
-                                <Link scroll={false} href={`/${pokemon.num}`}>
+                                <Link key={pokemon.num} scroll={false} href={`/${pokemon.num}`}>
                                     <a>
                                         <Button variant="secondary" className="me-1">
                                             {pokemon.name}
@@ -205,7 +205,7 @@ export default function Home(props) {
                         <div className='mb-2'>
                             <h6>Next Evolution:</h6>
                             {activePokemon?.next_evolution?.map(pokemon =>
-                                <Link scroll={false} href={`/${pokemon.num}`}>
+                                <Link key={pokemon.num} scroll={false} href={`/${pokemon.num}`}>
                                     <a>
                                         <Button variant="secondary" className="me-1">
                                             {pokemon.name}
@@ -215,8 +215,6 @@ export default function Home(props) {
                             )}
                         </div>
                     }
-
-                    {/* <li class="list-group-item"></li> */}
 
                     {/* <div>
                         {JSON.stringify(activePokemon, null, 4)}
@@ -351,10 +349,10 @@ export default function Home(props) {
                                             <div className='details-container'>
 
                                                 <h5>Type</h5>
-                                                <div className='mb-3'>{pokemon.type.map(type => <div>{type}</div>)}</div>
+                                                <div className='mb-3'>{pokemon.type.map(type => <div key={type}>{type}</div>)}</div>
 
                                                 <h5>Weaknesses</h5>
-                                                <div>{pokemon.weaknesses.map(weakness => <div>{weakness}</div>)}</div>
+                                                <div>{pokemon.weaknesses.map(weakness => <div key={weakness}>{weakness}</div>)}</div>
 
                                             </div>
 
