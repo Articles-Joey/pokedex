@@ -9,6 +9,8 @@ import Dropdown from 'react-bootstrap/Dropdown';
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
 
+import savedData from '../public/pokedex-backup.json'
+
 export default function Home(props) {
     const router = useRouter()
     const { pokemon_id } = router.query
@@ -125,8 +127,8 @@ export default function Home(props) {
         let allTypes = []
         let allWeakness = []
 
-        props.data.pokemon.map(pokemon => allTypes.push(...pokemon.type))
-        props.data.pokemon.map(pokemon => allWeakness.push(...pokemon.weaknesses))
+        savedData.pokemon.map(pokemon => allTypes.push(...pokemon.type))
+        savedData.pokemon.map(pokemon => allWeakness.push(...pokemon.weaknesses))
 
         setUniqueTypes(allTypes.filter(function (item, pos) {
             return allTypes.indexOf(item) == pos;
@@ -144,7 +146,7 @@ export default function Home(props) {
     useEffect(() => {
 
         if (router.isReady && pokemon_id) {
-            setActivePokemon(props.data.pokemon.find(pokemon => pokemon.id == pokemon_id))
+            setActivePokemon(savedData.pokemon.find(pokemon => pokemon.id == pokemon_id))
             console.log(router)
             handleShow()
         }
@@ -229,7 +231,14 @@ export default function Home(props) {
             <nav>
 
                 <div className='nav-section'>
-                    <Image src="/images/pokedex.png" alt="Vercel Logo" objectFit='contain' width={80} height={50} />
+                    <Image 
+                    src="/images/pokedex.png" 
+                    alt="Vercel Logo" 
+                    // objectFit='contain'
+                    style={{objectFit: "contain"}}
+                    width={80} 
+                    height={50} 
+                    />
                     <h5 className='title'>Joey G's Pokedex</h5>
                 </div>
 
@@ -304,7 +313,7 @@ export default function Home(props) {
                 <ul className={'pokemon-list text-center'}>
 
                     {
-                        props.data.pokemon
+                        savedData.pokemon
                             .filter(filterFunctionFilterSearch)
                             .filter(filterFunctionFilterType)
                             .filter(filterFunctionFilterWeakness)
@@ -320,17 +329,20 @@ export default function Home(props) {
                         </div>
                     }
 
-                    {props.data.pokemon
+                    {savedData.pokemon
                         .filter(filterFunctionFilterSearch)
                         .filter(filterFunctionFilterType)
                         .filter(filterFunctionFilterWeakness)
                         .map((pokemon, i) => {
 
+                            // Used to be pokemon.img but in case their website goes down
+                            const pokemonImage = `/images/pokemon/${pokemon.num}.png`
+
                             return (
                                 <li key={pokemon.name} className={'list-item'}>
                                     <Link scroll={false} href={`/${pokemon.id}`}>
 
-                                        <div className={'background'} style={{ backgroundImage: `url(${pokemon.img})` }}></div>
+                                        <div className={'background'} style={{ backgroundImage: `url(${pokemonImage})` }}></div>
 
                                         <div className='item-header'>
                                             <h5 className='title'>{pokemon.name}</h5>
@@ -338,7 +350,7 @@ export default function Home(props) {
                                         </div>
 
                                         <div className='img-wrap'>
-                                            <img src={pokemon.img} alt="" />
+                                            <img src={pokemonImage} alt="" />
                                         </div>
 
                                         <div className='details-container'>
@@ -376,11 +388,11 @@ export default function Home(props) {
 }
 
 // Wanted to do this so there is no client side loading, could have done axios/fetch and a loading state
-export async function getServerSideProps() {
+// export async function getServerSideProps() {
 
-    const res = await fetch(`https://raw.githubusercontent.com/Biuni/PokemonGO-Pokedex/master/pokedex.json`)
-    const data = await res.json()
+//     const res = await fetch(`https://raw.githubusercontent.com/Biuni/PokemonGO-Pokedex/master/pokedex.json`)
+//     const data = await res.json()
 
-    return { props: { data } }
+//     return { props: { data } }
 
-}
+// }
