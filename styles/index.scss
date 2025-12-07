@@ -1,4 +1,5 @@
-@import "bootstrap/scss/bootstrap-utilities";
+// @import "bootstrap/scss/bootstrap-utilities";
+@use "@/styles/global" as *;
 
 @font-face {
     font-family: "Pokemon";

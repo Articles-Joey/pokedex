@@ -115,7 +115,7 @@ export default function Home(props) {
     function filterFunctionFilterSearch(pokemon) {
 
         if (searchInput !== '') {
-            return pokemon.name.includes(searchInput)
+            return pokemon.name?.toLowerCase().includes(searchInput?.toLowerCase())
         } else {
             return pokemon
         }
@@ -231,20 +231,27 @@ export default function Home(props) {
             <nav>
 
                 <div className='nav-section'>
-                    <Image 
-                    src="/images/pokedex.png" 
-                    alt="Vercel Logo" 
-                    // objectFit='contain'
-                    style={{objectFit: "contain"}}
-                    width={80} 
-                    height={50} 
+                    <Image
+                        src="/images/pokedex.png"
+                        alt="Vercel Logo"
+                        // objectFit='contain'
+                        style={{ objectFit: "contain" }}
+                        width={80}
+                        height={50}
                     />
                     <h5 className='title'>Joey G's Pokedex</h5>
                 </div>
 
                 <div className='nav-section'>
 
-                    <input autoFocus placeholder='Search Pokemon...' className='search-bar' type="text" value={searchInput} onChange={e => setSearchInput(e.target.value)} />
+                    <input
+                        autoFocus
+                        placeholder='Search Pokemon...'
+                        className='search-bar'
+                        type="text"
+                        value={searchInput}
+                        onChange={e => setSearchInput(e.target.value)}
+                    />
 
                     <div className='dropdowns'>
                         <Dropdown>

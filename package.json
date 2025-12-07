@@ -1,6 +1,13 @@
 {
   "name": "pokedex",
-  "private": true,
+  "description": "Pokedex code challenge for Charter Communications",
+  "private": false,
+  "author": {
+    "name": "ArticlesJoey"
+  },
+  "version": "1.0.2",
+  "homepage": "https://pokedex-charter.vercel.app/",
+  "github": "https://github.com/Articles-Joey/pokedex",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -8,15 +15,15 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "bootstrap": "^5.3.3",
-    "next": "15.1.7",
-    "react": "19.0.0",
-    "react-bootstrap": "^2.10.9",
-    "react-dom": "19.0.0",
-    "sass": "^1.85.0"
+    "bootstrap": "^5.3.8",
+    "next": "^16",
+    "react": "^19",
+    "react-bootstrap": "^2.10.10",
+    "react-dom": "^19",
+    "sass": "^1.94.2"
   },
   "devDependencies": {
-    "eslint": "9.21.0",
-    "eslint-config-next": "15.1.7"
+    "eslint": "^9",
+    "eslint-config-next": "^16"
   }
 }
