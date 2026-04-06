@@ -16,14 +16,14 @@
   },
   "dependencies": {
     "bootstrap": "^5.3.8",
-    "next": "^16",
-    "react": "^19",
+    "next": "^16.2.2",
+    "react": "^19.2.4",
     "react-bootstrap": "^2.10.10",
-    "react-dom": "^19",
-    "sass": "^1.94.2"
+    "react-dom": "^19.2.4",
+    "sass": "^1.97.0"
   },
   "devDependencies": {
-    "eslint": "^9",
-    "eslint-config-next": "^16"
+    "eslint": "^10",
+    "eslint-config-next": "^16.2.2"
   }
 }
